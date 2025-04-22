@@ -4,14 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestDemoqa {
 
     @BeforeAll
-    static void beforeAll() {
+    static void ConfigurateBrowser() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
@@ -21,19 +19,18 @@ public class TestDemoqa {
     void fillFormTest() {
         open("/automation-practice-form");
 
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
         $("#firstName").setValue("Татьяна");
         $("#lastName").setValue("Волковинская");
         $("#userEmail").setValue("kup@mail.ru");
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9998887766");
-
-
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").$(byText("May")).click();
         $(".react-datepicker__year-select").$(byText("1998")).click();
         $(".react-datepicker__day--010").click();
-
-
         $("#subjectsInput").setValue("Ma") .pressEnter() ;
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img.png");
@@ -41,10 +38,7 @@ public class TestDemoqa {
         $("#react-select-3-input").setValue("NCR") .pressEnter();
         $("#react-select-4-input").setValue("Delhi") .pressEnter();
 
-
         $("#submit").click();
-
-
 
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Татьяна Волковинская"));
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("kup@mail.ru"));
