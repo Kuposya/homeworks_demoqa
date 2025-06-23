@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestDemoqa {
 
     @BeforeAll
-    static void ConfigurateBrowser() {
+    static void сonfigurateBrowser() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
