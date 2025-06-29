@@ -14,21 +14,22 @@ public class TestDemoqaPageObjectsTests extends TestBase {
     @Test
     public void fillFormTest() {
         registrationPage.openPage()
-            .setFirstName("Татьяна")
-            .setLastName("Волковинская")
-            .setEmail("kup@mail.ru")
-            .setGender("Female")
-            .setUserNumber("9998887766")
-            .setDateOfBirth("10", "May","1998")
-            .setSubjects("Maths")
-            .setHobbiesWrapper("Sports")
-            .uploadFile("img.png")
-            .setCurrentAddress("Москва")
-            .setState("NCR")
-            .setCity("Delhi")
-            .clickSubmit();
+                .removeBanner()
+                .setFirstName("Татьяна")
+                .setLastName("Волковинская")
+                .setEmail("kup@mail.ru")
+                .setGender("Female")
+                .setUserNumber("9998887766")
+                .setDateOfBirth("10", "May", "1998")
+                .setSubjects("Maths")
+                .setHobbiesWrapper("Sports")
+                .uploadFile("img.png")
+                .setCurrentAddress("Москва")
+                .setState("NCR")
+                .setCity("Delhi")
+                .clickSubmit();
 
-        resultTableComponent.addCheck("Student Name","Татьяна Волковинская")
+        resultTableComponent.addCheck("Student Name", "Татьяна Волковинская")
                 .addCheck("Student Email", "kup@mail.ru")
                 .addCheck("Gender", "Female")
                 .addCheck("Mobile", "9998887766")
@@ -36,7 +37,7 @@ public class TestDemoqaPageObjectsTests extends TestBase {
                 .addCheck("Subjects", "Maths")
                 .addCheck("Hobbies", "Sports")
                 .addCheck("Address", "Москва")
-                .addCheck("State and City","NCR Delhi");
+                .addCheck("State and City", "NCR Delhi");
     }
 
     //Заполнение обязательных полей
